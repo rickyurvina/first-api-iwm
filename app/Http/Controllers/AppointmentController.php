@@ -56,6 +56,11 @@ class AppointmentController extends Controller
     public function show(Appointment $appointment)
     {
         //
+        try {
+            return response()->json($appointment,200);
+        }catch (\Exception $exception){
+            throw new \Exception($exception->getMessage());
+        }
     }
 
 
@@ -72,7 +77,6 @@ class AppointmentController extends Controller
      */
     public function destroy(Appointment $appointment)
     {
-        //
         try{
             DB::beginTransaction();
             $appointment->delete();
