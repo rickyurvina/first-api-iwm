@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('appointments', [\App\Http\Controllers\AppointmentController::class,'index']);
+
+Route::post('appointments',[\App\Http\Controllers\AppointmentController::class,'store']);
