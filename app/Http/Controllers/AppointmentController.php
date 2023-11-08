@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
+use Illuminate\Http\Request;
+
 
 class AppointmentController extends Controller
 {
@@ -17,20 +19,28 @@ class AppointmentController extends Controller
         return response()->json($appointments,200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAppointmentRequest $request)
+    public function store(Request $request)
     {
         //
+        $fields=$request->validate([
+            'name'=>'required',
+            'date'=>'nullable',
+            'symptoms'=>'nullable',
+            'user_id'=>'required'
+        ]);
+
+        $appointment=Appointment::create([
+            'name'=>$fields['name'],
+            'date'=>$fields['date'],
+            'symptoms'=>$fields['symptoms'],
+            'user_id'=>$fields['user_id']
+        ]);
+
+        return response()->json($appointment,200);
     }
 
     /**
