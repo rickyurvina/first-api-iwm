@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('appointments', [\App\Http\Controllers\AppointmentController::class,'index']);
 
 Route::post('appointments',[\App\Http\Controllers\AppointmentController::class,'store']);
-Route::delete('appointments/{id}',[\App\Http\Controllers\AppointmentController::class,'destroy']);
+Route::delete('appointments/{appointment}',[\App\Http\Controllers\AppointmentController::class,'destroy']);

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 
 class AppointmentController extends Controller
@@ -76,7 +77,7 @@ class AppointmentController extends Controller
             DB::beginTransaction();
             $appointment->delete();
             DB::commit();
-
+            return response()->json('Deleted success',200);
         }catch (\Exception $exception){
             DB::rollBack();
             throw new \Exception($exception->getMessage());
