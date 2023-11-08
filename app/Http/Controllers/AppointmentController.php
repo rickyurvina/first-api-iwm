@@ -57,13 +57,6 @@ class AppointmentController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -79,5 +72,14 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         //
+        try{
+            DB::beginTransaction();
+            $appointment->delete();
+            DB::commit();
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            throw new \Exception($exception->getMessage());
+        }
     }
 }
