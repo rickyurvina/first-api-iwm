@@ -33,7 +33,7 @@ class AppointmentController extends Controller
                 'name'=>'required',
                 'date'=>'nullable',
                 'symptoms'=>'nullable',
-                'user_id'=>'required'
+                'user_id'=>'required|integer'
             ]);
 
             $appointment=Appointment::create([
@@ -70,6 +70,10 @@ class AppointmentController extends Controller
     public function update(Request $request, Appointment $appointment)
     {
         //
+//        1. Buscar el appointment
+//    2. Validar los campos
+//    3. actualizar el registro
+//    4. devolver una respuesta
     }
 
     /**
